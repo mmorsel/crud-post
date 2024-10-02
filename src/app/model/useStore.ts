@@ -26,7 +26,7 @@ export const useStore = create<IUseStore>()(
         },
         createPost: (post: IPost) => {
           set(({ posts }) => ({
-            posts: [...posts, post],
+            posts: [post, ...posts],
           }));
         },
         deletePost: (id: string) => {

@@ -5,7 +5,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useStore } from "../app/model/useStore";
-import { useState } from "react";
+import { memo, useCallback, useState } from "react";
 import { Divider, IconButton } from "@mui/material";
 import { RiDeleteBin2Fill } from "react-icons/ri";
 
@@ -13,18 +13,18 @@ const DeletePostButton: React.FC<{ postId: string }> = ({ postId }) => {
   const [open, setOpen] = useState(false);
   const deletePost = useStore((store) => store.deletePost);
 
-  const handleClickOpen = () => {
+  const handleClickOpen = useCallback(() => {
     setOpen(true);
-  };
+  }, []);
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setOpen(false);
-  };
+  }, []);
 
-  const deletePostHandler = () => {
+  const deletePostHandler = useCallback(() => {
     deletePost(postId ?? "");
     handleClose();
-  };
+  }, [deletePost, handleClose, postId]);
 
   return (
     <>
@@ -53,4 +53,4 @@ const DeletePostButton: React.FC<{ postId: string }> = ({ postId }) => {
   );
 };
 
-export default DeletePostButton;
+export default memo(DeletePostButton);

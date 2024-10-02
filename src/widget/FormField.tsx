@@ -1,4 +1,5 @@
 import { TextField } from "@mui/material";
+import { memo } from "react";
 import { useController, useFormContext } from "react-hook-form";
 
 interface IFormField {
@@ -34,4 +35,4 @@ const FormField: React.FC<IFormField> = ({ name, label, required, type }) => {
   );
 };
 
-export default FormField;
+export default memo(FormField);

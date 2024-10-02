@@ -107,7 +107,7 @@ const PostForm = () => {
           <UploadFile name="cover" />
         </Stack>
         <Button variant="contained" size="large" type="submit">
-          {isEditMode ? "Редактировать пост" : "Создать пост"}
+          {isEditMode ? "Обновить пост" : "Создать пост"}
         </Button>
       </Box>
     </FormProvider>

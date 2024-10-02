@@ -12,6 +12,7 @@ import { BiEdit } from "react-icons/bi";
 import { Divider, Stack } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import DeletePostButton from "../../../widget/DeletePostButton";
+import { memo } from "react";
 
 const PostCard: React.FC<{ post: IPost }> = ({ post }) => {
   const navigate = useNavigate();
@@ -25,7 +26,10 @@ const PostCard: React.FC<{ post: IPost }> = ({ post }) => {
       />
       <CardMedia component="img" sx={{ maxWidth: 800 }} image={post.cover} />
       <CardContent>
-        <Typography variant="body2" sx={{ color: "text.secondary" }}>
+        <Typography
+          variant="body2"
+          sx={{ color: "text.secondary", wordWrap: "break-word" }}
+        >
           {post.content}
         </Typography>
       </CardContent>
@@ -48,4 +52,4 @@ const PostCard: React.FC<{ post: IPost }> = ({ post }) => {
   );
 };
 
-export default PostCard;
+export default memo(PostCard);

@@ -4,6 +4,7 @@ import { BiCloud } from "react-icons/bi";
 import Box from "@mui/material/Box";
 import ButtonBase from "@mui/material/ButtonBase";
 import { useController, useFormContext } from "react-hook-form";
+import { memo } from "react";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -71,7 +72,7 @@ const ImageBackdrop = styled("span")(({ theme }) => ({
   transition: theme.transitions.create("opacity"),
 }));
 
-const UploadFile = ({ name }: { name: string }) => {
+const UploadFile: React.FC<{ name: string }> = ({ name }) => {
   const { control, watch } = useFormContext();
   const { field } = useController({
     name,
@@ -121,4 +122,4 @@ const UploadFile = ({ name }: { name: string }) => {
   );
 };
 
-export default UploadFile;
+export default memo(UploadFile);
